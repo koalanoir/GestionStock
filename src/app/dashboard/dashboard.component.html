@@ -1,0 +1,49 @@
+<app-header></app-header>
+<div class="chart-container">
+    <google-chart
+      [type]="type"
+      [columns]="columns"
+      [data]="data"
+      [options]="options">
+    </google-chart>
+  </div>
+  <div class="charts">
+    <div class="table-container">
+        <h2>Statistiques mensuelles</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Mois</th>
+              <th>Ventes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of data">
+              <td>{{ row[0] }}</td>
+              <td>{{ row[1] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ranking-container">
+        <h2>Classement des articles les plus vendus</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Rang</th>
+              <th>Article</th>
+              <th>Ventes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let article of articles; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ article.name }}</td>
+              <td>{{ article.sales }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+  </div>
+<app-footer></app-footer>

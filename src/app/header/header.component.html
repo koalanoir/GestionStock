@@ -1,0 +1,19 @@
+<header class="header">
+    <nav class="navbar">
+      <a href=""  class="logo">Gestion Stocks</a>
+      <ul class="nav-links">
+        <li><a href="dashboard">Tableau de bord</a></li>
+        <li><a href="features">Fonctionnalités</a></li>
+        <li><a href="contact">Contact</a></li>
+      </ul>
+      <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+        <button class="login-btn" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+          Log out
+        </button>
+      </ng-container>
+  
+      <ng-template #loggedOut>
+        <button class="login-btn" (click)="auth.loginWithRedirect()">Log in</button>
+      </ng-template>
+    </nav>
+</header>

@@ -8,5 +8,10 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  menuOpen: boolean=false;
   constructor(@Inject(DOCUMENT) public document: Document,public auth: AuthService) {}
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
 }

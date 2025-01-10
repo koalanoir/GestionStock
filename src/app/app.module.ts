@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GestionProduitsComponent } from './gestion-produits/gestion-produits.component';
@@ -12,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FonctionnalitesComponent } from './fonctionnalites/fonctionnalites.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { ContactComponent } from './contact/contact.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,7 @@ import { ContactComponent } from './contact/contact.component';
     ContactComponent
   ],
   imports: [
+    MatIconModule,
     GoogleChartsModule,
     BrowserModule,
     AppRoutingModule,
@@ -36,6 +39,7 @@ import { ContactComponent } from './contact/contact.component';
           redirect_uri: window.location.origin,
         },
       }),
+    BrowserAnimationsModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

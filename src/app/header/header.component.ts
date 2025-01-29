@@ -8,8 +8,19 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  menuOpen: boolean=false;
-  constructor(@Inject(DOCUMENT) public document: Document,public auth: AuthService) {}
+  menuOpen: boolean = false;
+  userId: string | undefined;
+
+  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService) {}
+
+  ngOnInit(): void {
+    this.auth.user$.subscribe(user => {
+      if (user?.sub) {
+        this.userId = user.sub.split('|')[1]; // Extraire l'identifiant unique
+        console.log(this.userId);
+      }
+    });
+  }
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;

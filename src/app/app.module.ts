@@ -14,6 +14,14 @@ import { FonctionnalitesComponent } from './fonctionnalites/fonctionnalites.comp
 import { AuthModule } from '@auth0/auth0-angular';
 import { ContactComponent } from './contact/contact.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { ArticleService } from 'src/services/article.service';
+import { FormsModule } from '@angular/forms';
+import { AlerteComponent } from './alerte/alerte.component';
+import { PeremptionComponent } from './peremption/peremption.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,23 +33,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     FooterComponent,
     FonctionnalitesComponent,
-    ContactComponent
+    ContactComponent,
+    AlerteComponent,
+    PeremptionComponent
   ],
   imports: [
     MatIconModule,
+    FormsModule,
     GoogleChartsModule,
     BrowserModule,
     AppRoutingModule,
-    AuthModule.forRoot({
-        domain: 'dev-cjxhb-x9.eu.auth0.com',
-        clientId: 'IPh5p5GOcigu4AT9yVSfr20NwKa5Wp4B',
-        authorizationParams: {
-          redirect_uri: window.location.origin,
-        },
-      }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AuthModule.forRoot(environment.auth0),
     BrowserAnimationsModule,
     ],
-  providers: [],
+  providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

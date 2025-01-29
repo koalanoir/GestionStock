@@ -4,13 +4,21 @@
   
       <!-- Menu Hamburger pour les écrans plus petits -->
       <mat-icon class="menu-icon" (click)="toggleMenu()">menu</mat-icon>
-      
+  
       <!-- Liens de navigation -->
       <ul class="nav-links" [class.show]="menuOpen">
-        <li><a routerLink="/dashboard">Tableau de bord</a></li>
+
+        <li>
+          <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOu">
+            <a routerLink="/dashboard">Tableau de bord</a>
+          </ng-container>
+          <ng-template #loggedOu>
+            <a (click)="auth.loginWithRedirect()">Tableau de bord</a>
+          </ng-template>
+        </li>
         <li><a routerLink="/features">Fonctionnalités</a></li>
         <li><a routerLink="/contact">Contact</a></li>
-        <li>      <!-- Boutons de connexion/déconnexion -->
+        <li>     <!-- Boutons de connexion/déconnexion -->
           <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
             <button class="login-btn" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
               Log out
@@ -22,7 +30,7 @@
           </ng-template></li>
       </ul>
   
-
+ 
     </nav>
   </header>
   

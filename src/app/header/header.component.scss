@@ -28,9 +28,12 @@ a {
     }
 
     .nav-links {
+      width: 100%;
       list-style: none;
       display: flex;
       gap: 1rem;
+      justify-content: center;
+      align-items: center;
       // Masquer le menu sur mobile
       &.show {
         display: block;

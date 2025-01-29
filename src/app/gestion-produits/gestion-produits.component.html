@@ -1,1 +1,45 @@
-<p>gestion-produits works!</p>
+<app-header></app-header>
+
+<div class="container">
+  <h1>Inventaire des Articles</h1>
+  <button (click)="toggleAddArticleForm()" class="add-article-btn">Ajouter un article</button>
+  
+  <div *ngIf="showAddArticleForm" class="add-article-form">
+    <h2>Ajouter un nouvel article</h2>
+    <form (ngSubmit)="addArticle()">
+      <label for="name">Nom:</label>
+      <input type="text" id="name" [(ngModel)]="newArticle.name" name="name" required>
+      
+      <label for="quantity">Quantité:</label>
+      <input type="number" id="quantity" [(ngModel)]="newArticle.quantity" name="quantity" required>
+      
+      <label for="price">Prix:</label>
+      <input type="number" id="price" [(ngModel)]="newArticle.price" name="price" required>
+      
+      <label for="expirationDate">Date de péremption:</label>
+      <input type="date" id="expirationDate" [(ngModel)]="newArticle.expirationDate" name="expirationDate" required>
+      
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+        <th>Date de péremption</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles">
+        <td data-label="Nom">{{ article.name }}</td>
+        <td data-label="Quantité">{{ article.quantity }}</td>
+        <td data-label="Prix" class="currency">{{ article.price | currency:'EUR' }}</td>
+        <td data-label="Date de péremption">{{ article.expirationDate.toDate() | date:'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

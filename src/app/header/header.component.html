@@ -16,7 +16,7 @@
             <a (click)="auth.loginWithRedirect()">Tableau de bord</a>
           </ng-template>
         </li>
-        <li><a routerLink="/features">Fonctionnalités</a></li>
+        <li><a routerLink="/features">Outils</a></li>
         <li><a routerLink="/contact">Contact</a></li>
         <li>     <!-- Boutons de connexion/déconnexion -->
           <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">

@@ -6,14 +6,18 @@
     <thead>
       <tr>
         <th>Nom</th>
+        <th>Id produit</th>
+        <th>Nb de lot</th>
         <th>Quantité</th>
-        <th>Prix</th>
+        <th>Prixunitaire</th>
         <th>Date de péremption</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let article of articles">
         <td>{{ article.name }}</td>
+        <td>{{ article.productId }}</td>
+        <td>{{ article.lot }}</td>
         <td>{{ article.quantity }}</td>
         <td>{{ article.price | currency:'EUR' }}</td>
         <td>{{ article.expirationDate.toDate() | date:'dd/MM/yyyy' }}</td>

@@ -7,13 +7,19 @@
   <div *ngIf="showAddArticleForm" class="add-article-form">
     <h2>Ajouter un nouvel article</h2>
     <form (ngSubmit)="addArticle()">
+      <label for="productId">Identifiant du produit:</label>
+      <input type="text" id="productId" [(ngModel)]="newArticle.productId" name="productId" (blur)="checkProduct()" required>
+      
       <label for="name">Nom:</label>
       <input type="text" id="name" [(ngModel)]="newArticle.name" name="name" required>
+      
+      <label for="lot">Numéro de lot:</label>
+      <input type="text" id="lot" [(ngModel)]="newArticle.lot" name="lot" required readonly>
       
       <label for="quantity">Quantité:</label>
       <input type="number" id="quantity" [(ngModel)]="newArticle.quantity" name="quantity" required>
       
-      <label for="price">Prix:</label>
+      <label for="price">Prix unitaire:</label>
       <input type="number" id="price" [(ngModel)]="newArticle.price" name="price" required>
       
       <label for="expirationDate">Date de péremption:</label>
@@ -26,18 +32,18 @@
   <table>
     <thead>
       <tr>
+        <th>Identifiant du produit</th>
         <th>Nom</th>
-        <th>Quantité</th>
-        <th>Prix</th>
-        <th>Date de péremption</th>
+        <th>Nombre de lots</th>
+        <th>Quantité totale</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let article of articles">
-        <td data-label="Nom">{{ article.name }}</td>
-        <td data-label="Quantité">{{ article.quantity }}</td>
-        <td data-label="Prix" class="currency">{{ article.price | currency:'EUR' }}</td>
-        <td data-label="Date de péremption">{{ article.expirationDate.toDate() | date:'dd/MM/yyyy' }}</td>
+      <tr *ngFor="let product of groupedArticles">
+        <td data-label="Identifiant du produit">{{ product.productId }}</td>
+        <td data-label="Nom">{{ product.name }}</td>
+        <td data-label="Nombre de lots">{{ product.lotCount }}</td>
+        <td data-label="Quantité totale">{{ product.totalQuantity }}</td>
       </tr>
     </tbody>
   </table>

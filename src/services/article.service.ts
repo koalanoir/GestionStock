@@ -17,6 +17,11 @@ export class ArticleService {
   getArticlesByUserIdOrderPeremptionDate(userId: string): Observable<Article[]> {
     return this.firestore.collection<Article>(this.collectionName, ref => ref.where('userId', '==', userId).orderBy('expirationDate')).valueChanges({ idField: 'id' });
   }
+
+  getProductById(productId: string): Observable<Article[]> {
+    return this.firestore.collection<Article>(this.collectionName, ref => ref.where('productId', '==', productId)).valueChanges();
+  }
+  
   addArticle(article: Article): Promise<void> {
     const id = this.firestore.createId();
     return this.firestore.collection(this.collectionName).doc(id).set({ ...article, id });

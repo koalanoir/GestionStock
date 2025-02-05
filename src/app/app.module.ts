@@ -25,7 +25,7 @@ import { PeremptionComponent } from './peremption/peremption.component';
 @NgModule({
   declarations: [
     AppComponent,
-    
+    PeremptionComponent,
     HomeComponent,
     DashboardComponent,
     GestionProduitsComponent,
@@ -35,7 +35,7 @@ import { PeremptionComponent } from './peremption/peremption.component';
     FonctionnalitesComponent,
     ContactComponent,
     AlerteComponent,
-    PeremptionComponent
+    
   ],
   imports: [
     MatIconModule,

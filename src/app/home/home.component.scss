@@ -1,69 +1,188 @@
 $primary-color: #4CAF50;
 $secondary-color: #f4f4f4;
-$font-color: #333;
+$font-color: rgba(33, 33, 33, 0.8);
 .main {
-    .hero {
-      text-align: center;
-      padding: 2rem;
-      background-color: white;
-      margin: 2rem auto;
-  
-      h1 {
-        font-size: 2.5rem;
-        color: $primary-color;
-      }
-  
-      p {
-        font-size: 1.2rem;
-        margin: 1rem 0;
-      }
-  
-      .cta-btn {
-        display: inline-block;
-        background-color: $primary-color;
-        color: white;
-        padding: 0.8rem 1.5rem;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 1rem;
-  
-        &:hover {
-          background-color: darken($primary-color, 10%);
-        }
-      }
-    }
-  
-    .dashboard {
-      padding: 2rem;
-      background-color: $secondary-color;
-  
-      h2 {
-        text-align: center;
-        margin-bottom: 1.5rem;
-      }
-  
-      .dashboard-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-  
-        .card {
-          background-color: white;
-          padding: 1.5rem;
-          border-radius: 10px;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
-          h3 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: $primary-color;
-          }
-  
-          p {
-            margin-top: 0.5rem;
-            font-size: 1rem;
-          }
-        }
-      }
-    }
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+p{
+  color: $font-color;
+}
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.hero-content {
+  max-width: 50%;
+}
+.hero-image {
+  max-width: 30%;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: $primary-color;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  background-color: #4CAF50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.cta-btn:hover {
+  background-color: #00b312;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.features {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.features-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.feature {
+  flex: 1;
+  min-width: 250px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.feature img {
+  max-width: 50px;
+  margin-bottom: 10px;
+}
+
+.pricing {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #f4f4f4;
+}
+
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pricing-card {
+  flex: 1;
+  min-width: 250px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.pricing-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.pricing-card p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.pricing-card ul li {
+  margin-bottom: 10px;
+}
+
+.subscribe-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.subscribe-btn:hover {
+  background-color: #218838;
+}
+
+.about {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.cta {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.cta h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .hero-image {
+    max-width: 90%;
   }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f4f4f4;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+  }
+}

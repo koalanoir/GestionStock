@@ -7,30 +7,38 @@
   
       <!-- Liens de navigation -->
       <ul class="nav-links" [class.show]="menuOpen">
+        <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOu">
 
         <li>
-          <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOu">
-            <a routerLink="/dashboard">Tableau de bord</a>
-          </ng-container>
-          <ng-template #loggedOu>
-            <a (click)="auth.loginWithRedirect()">Tableau de bord</a>
-          </ng-template>
+          <a routerLink="/dashboard">Tableau de bord</a>            
         </li>
-        <li><a routerLink="/features">Outils</a></li>
-        <li><a routerLink="/contact">Contact</a></li>
+        <li>
+          <a routerLink="/gestion">Gestion du stock</a>          
+        </li>
+        <li>
+          <a routerLink="/peremption">Suivi des dates de péremption</a>
+        </li>
+        </ng-container>  
+        <ng-template #loggedOu>
+          <li>
+            <a routerLink="/features">Outils</a>
+          </li>
+          <li>
+            <a routerLink="/contact">Contact</a>
+          </li>
+        </ng-template>
+        
         <li>     <!-- Boutons de connexion/déconnexion -->
           <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
             <button class="login-btn" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
-              Log out
+              Se déconnecter
             </button>
           </ng-container>
       
           <ng-template #loggedOut>
-            <button class="login-btn" (click)="auth.loginWithRedirect()">Log in</button>
+            <button class="login-btn" (click)="auth.loginWithRedirect()">Se connecter</button>
           </ng-template></li>
       </ul>
-  
- 
     </nav>
+
   </header>
-  

@@ -2,26 +2,48 @@
 
 <div class="container">
   <h1>Articles par date de péremption</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Id produit</th>
-        <th>Nb de lot</th>
-        <th>Quantité</th>
-        <th>Prixunitaire</th>
-        <th>Date de péremption</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let article of articles">
-        <td>{{ article.name }}</td>
-        <td>{{ article.productId }}</td>
-        <td>{{ article.lot }}</td>
-        <td>{{ article.quantity }}</td>
-        <td>{{ article.price | currency:'EUR' }}</td>
-        <td>{{ article.expirationDate.toDate() | date:'dd/MM/yyyy' }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="tables">
+    <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Id produit</th>
+            <th>Nb de lots</th>
+            <th>Quantité</th>
+            <th>Prix unitaire</th>
+            <th>Date de péremption la plus proche</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of groupedArticles" (click)="toggleLots(product)" class="clickable-row">
+            <td>{{ product.name }}</td>
+            <td>{{ product.productId }}</td>
+            <td>{{ product.lotCount }}</td>
+            <td>{{ product.totalQuantity }}</td>
+            <td>{{ product.price | currency }}</td>
+            <td>{{ product.earliestExpirationDate | date:'dd/MM/yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table *ngIf="product_view.showLots" class="styled-table">
+        <thead>
+           
+          <tr>
+            <th>Nom du produit</th>
+            <th>Lot</th>
+            <th>Quantité</th>
+            <th>Date de péremption</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lot of product_view.lots" class="lots-row">
+            <td>{{ lot.name }}</td>
+            <td>{{ lot.lot }}</td>
+            <td>{{ lot.quantity }}</td>
+            <td>{{ lot.expirationDate.toDate() | date:'dd/MM/yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
 </div>

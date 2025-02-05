@@ -2,9 +2,10 @@
 
 <div class="container">
   <h1>Inventaire des Articles</h1>
-  <button (click)="toggleAddArticleForm()" class="add-article-btn">Ajouter un article</button>
+  <button (click)="toggleAddArticleForm()" class="btn add-article-btn">Ajouter un article</button>
+  <button (click)="toggleSalesForm()" class="btn sales-btn">Ventes du jour</button>
   
-  <div *ngIf="showAddArticleForm" class="add-article-form">
+  <div *ngIf="showAddArticleForm" class="form-container add-article-form">
     <h2>Ajouter un nouvel article</h2>
     <form (ngSubmit)="addArticle()">
       <label for="productId">Identifiant du produit:</label>
@@ -25,11 +26,27 @@
       <label for="expirationDate">Date de péremption:</label>
       <input type="date" id="expirationDate" [(ngModel)]="newArticle.expirationDate" name="expirationDate" required>
       
-      <button type="submit">Ajouter</button>
+      <button type="submit" class="btn submit-btn">Ajouter</button>
     </form>
   </div>
 
-  <table>
+  <div *ngIf="showSalesForm" class="form-container sales-form">
+    <h2>Ventes du jour</h2>
+    <form (ngSubmit)="recordSales()">
+      <label for="salesProductId">Identifiant du produit:</label>
+      <input type="text" id="salesProductId" [(ngModel)]="sales.productId" name="salesProductId" required>
+      
+      <label for="salesLot">Numéro de lot:</label>
+      <input type="text" id="salesLot" [(ngModel)]="sales.lot" name="salesLot" required>
+      
+      <label for="salesQuantity">Quantité vendue:</label>
+      <input type="number" id="salesQuantity" [(ngModel)]="sales.quantity" name="salesQuantity" required>
+      
+      <button type="submit" class="btn submit-btn">Enregistrer les ventes</button>
+    </form>
+  </div>
+
+  <table class="styled-table">
     <thead>
       <tr>
         <th>Identifiant du produit</th>

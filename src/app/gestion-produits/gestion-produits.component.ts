@@ -14,7 +14,9 @@ export class GestionProduitsComponent implements OnInit {
   groupedArticles: any[] = [];
   userId: string | undefined;
   showAddArticleForm: boolean = false;
+  showSalesForm: boolean = false;
   newArticle: Article = { id: '', productId: '', name: '', lot: '', quantity: 0, price: 0, expirationDate: Timestamp.now() };
+  sales: { productId: string, lot: string, quantity: number } = { productId: '', lot: '', quantity: 0 };
 
   constructor(private articleService: ArticleService, public auth: AuthService) {}
 
@@ -35,7 +37,7 @@ export class GestionProduitsComponent implements OnInit {
   }
 
   groupArticlesByProduct(): void {
-    const grouped = this.articles.reduce((acc: any[], article) => {
+    const grouped = this.articles.reduce((acc: any[], article: Article) => {
       const product = acc.find(item => item.productId === article.productId);
       if (product) {
         product.lots.add(article.lot);
@@ -59,6 +61,10 @@ export class GestionProduitsComponent implements OnInit {
 
   toggleAddArticleForm(): void {
     this.showAddArticleForm = !this.showAddArticleForm;
+  }
+
+  toggleSalesForm(): void {
+    this.showSalesForm = !this.showSalesForm;
   }
 
   addArticle(): void {
@@ -90,5 +96,19 @@ export class GestionProduitsComponent implements OnInit {
         }
       });
     }
+  }
+
+  recordSales(): void {
+    this.articleService.getArticleByProductIdAndLot(this.sales.productId, this.sales.lot).subscribe((articles: Article[]) => {
+      if (articles.length > 0) {
+        const article = articles[0];
+        article.quantity -= this.sales.quantity;
+        this.articleService.updateArticle(article).then(() => {
+          this.loadUserArticles(this.userId!);
+          this.sales = { productId: '', lot: '', quantity: 0 };
+          this.showSalesForm = false;
+        });
+      }
+    });
   }
 }

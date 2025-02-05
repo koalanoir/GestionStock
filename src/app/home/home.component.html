@@ -1,27 +1,64 @@
 <app-header></app-header>
 <main class="main">
-    <section class="hero">
+  <section class="hero">
+    <div class="hero-content">
       <h1>Bienvenue sur Gestion Stocks</h1>
       <p>Votre outil intelligent pour gérer vos stocks en toute simplicité.</p>
-      <a href="#features" class="cta-btn">En savoir plus</a>
-    </section>
+      <p><strong>Actuellement en phase de bêta test - Gratuit pendant la période de développement</strong></p>
+      <a href="#about" class="cta-btn">En savoir plus</a>
+    </div>
+    <div class="hero-image">
+      <img src="assets/img/gestionstock.png" alt="Gestion Stocks">
+    </div>
+  </section>
 
-    <section id="dashboard" class="dashboard">
-      <h2>Vous pourrez acceder à nos Fonctionnalités telles que : </h2>
-      <div class="dashboard-grid">
-        <div class="card">
-          <h3>Produits en stock</h3>
-          <p>Visualisez l'état de vos stocks en temps réel.</p>
-        </div>
-        <div class="card">
-          <h3>Alertes</h3>
-          <p>Recevez des notifications pour les produits en rupture de stock.</p>
-        </div>
-        <div class="card">
-          <h3>Rapports</h3>
-          <p>Consultez vos performances grâce à nos analyses détaillées.</p>
-        </div>
+  <section id="features" class="features">
+    <h2>Fonctionnalités</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <img src="assets/img/stock.png" alt="Produits en stock">
+        <h3>Produits en stock</h3>
+        <p>Visualisez l'état de vos stocks en temps réel.</p>
       </div>
-    </section>
+      <div class="feature">
+        <img src="assets/img/rapport.png" alt="Alertes de péremption">
+        <h3>Alertes de péremption</h3>
+        <p>Recevez des notifications avant que vos produits n'expirent.</p>
+      </div>
+      <div class="feature">
+        <img src="assets/img/alert.png" alt="Rapports détaillés">
+        <h3>Rapports détaillés</h3>
+        <p>Générez des rapports détaillés sur vos stocks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <h2>Nos Offres</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Bêta Test</h3>
+        <p>0€ / mois</p>
+        <ul>
+          <li>Gestion de base des stocks</li>
+          <li>Alertes de péremption</li>
+          <li>Rapports mensuels</li>
+        </ul>
+        <button class="subscribe-btn">S'inscrire pour le bêta test</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>À propos de Gestion Stocks</h2>
+    <p>Gestion Stocks est un outil conçu pour aider les entreprises à gérer leurs stocks de manière efficace et intelligente. Notre objectif est de simplifier la gestion des stocks en fournissant des fonctionnalités clés telles que la visualisation en temps réel des stocks, les alertes de péremption et la génération de rapports détaillés.</p>
+    <p>En utilisant Gestion Stocks, vous pouvez réduire les pertes dues à la péremption des produits, optimiser vos niveaux de stock et prendre des décisions éclairées grâce à des rapports détaillés. Rejoignez-nous dès aujourd'hui et découvrez comment Gestion Stocks peut transformer la gestion de vos stocks.</p>
+  </section>
+
+  <section id="cta" class="cta">
+    <h2>Prêt à commencer ?</h2>
+    <p>Rejoignez-nous dès aujourd'hui et commencez à gérer vos stocks de manière intelligente.</p>
+    <button class="cta-btn">S'inscrire maintenant</button>
+  </section>
 </main>
 <app-footer></app-footer>

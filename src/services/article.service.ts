@@ -26,4 +26,14 @@ export class ArticleService {
     const id = this.firestore.createId();
     return this.firestore.collection(this.collectionName).doc(id).set({ ...article, id });
   }
+  getArticleByProductIdAndLot(productId: string, lot: string): Observable<Article[]> {
+    return this.firestore.collection<Article>(this.collectionName, ref => ref.where('productId', '==', productId).where('lot', '==', lot).orderBy('expirationDate')).valueChanges();
+  }
+  updateArticle(article: Article): Promise<void> {
+    if (article.quantity === 0) {
+      return this.firestore.collection(this.collectionName).doc(article.id).delete();
+    } else {
+      return this.firestore.collection(this.collectionName).doc(article.id).update(article);
+    }
+  }
 }
